@@ -52,7 +52,7 @@ public class GradientLayout extends View {
 //        mPaint.setStrokeWidth(4);//描边宽度
 //        mPaint.setStrokeCap(Paint.Cap.ROUND); //圆角效果
 //        mPaint.setStrokeJoin(Paint.Join.MITER);//拐角风格
-//        mPaint.setShader(new SweepGradient(200, 200, Color.BLUE, Color.RED)); //设置环形渲染器
+//        mPaint.setShader(new SweepGradient(200, 200, Color.BLUE, Color.RED)); //
 //        mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DARKEN)); //设置图层混合模式
 //        mPaint.setColorFilter(new LightingColorFilter(0x00ffff, 0x000000)); //设置颜色过滤器
 //        mPaint.setFilterBitmap(true); //设置双线性过滤

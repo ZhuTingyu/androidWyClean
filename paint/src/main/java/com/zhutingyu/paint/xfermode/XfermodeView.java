@@ -14,7 +14,7 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
-public class XfermodeView extends View {
+public class  XfermodeView extends View {
 
     private Paint mPaint;
     private int mWidth, mHeight;
