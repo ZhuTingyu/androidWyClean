@@ -55,14 +55,14 @@ public class ColorFilterView extends View {
 //        mPaint.setColorFilter(lighting);
 //        canvas.drawBitmap(mBitmap, 0,0, mPaint);
 
-//        //绿色更亮
-//        LightingColorFilter lighting = new LightingColorFilter(0xffffff,0x003000);
-//        mPaint.setColorFilter(lighting);
-//        canvas.drawBitmap(mBitmap, 0,0, mPaint);
+        //绿色更亮
+        LightingColorFilter lighting = new LightingColorFilter(0xffffff,0x003000);
+        mPaint.setColorFilter(lighting);
+        canvas.drawBitmap(mBitmap, 0,0, mPaint);
 
-//        PorterDuffColorFilter porterDuffColorFilter = new PorterDuffColorFilter(Color.RED, PorterDuff.Mode.DARKEN);
-//        mPaint.setColorFilter(porterDuffColorFilter);
-//        canvas.drawBitmap(mBitmap, 100, 0, mPaint);
+        PorterDuffColorFilter porterDuffColorFilter = new PorterDuffColorFilter(Color.RED, PorterDuff.Mode.DARKEN);
+        mPaint.setColorFilter(porterDuffColorFilter);
+        canvas.drawBitmap(mBitmap, 100, 0, mPaint);
 
         float[] colorMatrix = {
                 2,0,0,0,0,   //red
@@ -72,11 +72,11 @@ public class ColorFilterView extends View {
         };
 
         ColorMatrix cm = new ColorMatrix();
-//        //亮度调节
-//        cm.setScale(1,2,1,1);
+        //亮度调节
+        cm.setScale(1,2,1,1);
 
-//        //饱和度调节0-无色彩， 1- 默认效果， >1饱和度加强
-//        cm.setSaturation(2);
+        //饱和度调节0-无色彩， 1- 默认效果， >1饱和度加强
+        cm.setSaturation(2);
 
         //色调调节
         cm.setRotate(0, 45);
