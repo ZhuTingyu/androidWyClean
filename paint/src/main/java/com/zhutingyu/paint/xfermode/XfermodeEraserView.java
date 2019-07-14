@@ -14,6 +14,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import com.zhutingyu.paint.R;
 
+/**
+ * 刮刮奖效果
+ */
+
 public class XfermodeEraserView extends View {
 
     private Paint  mPaint;
