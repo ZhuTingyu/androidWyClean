@@ -15,6 +15,9 @@ import com.zhutingyu.paint.R;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 粒子爆裂效果
+ */
 public class SplitView extends View {
 
     private Paint mPaint;
