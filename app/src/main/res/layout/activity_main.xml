@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-    <com.zhutingyu.learn.painDemo.SplitView
+    <com.zhutingyu.learn.painDemo.LoadView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
            />

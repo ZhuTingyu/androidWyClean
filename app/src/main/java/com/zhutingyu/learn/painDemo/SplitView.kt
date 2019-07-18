@@ -12,6 +12,9 @@ import android.view.View
 import com.zhutingyu.learn.R
 import com.zhutingyu.paint.canvas.split.Ball
 
+/**
+ * 粒子爆裂
+ */
 class SplitView @JvmOverloads constructor(context: Context?, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
     View(context, attrs, defStyleAttr) {
     private var bitmap: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.pic)
