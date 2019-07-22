@@ -54,7 +54,7 @@ public class DragBubbleView extends View {
     /**
      * 气泡消息文字
      */
-    private String mTextStr;
+    private String mTextStr = "2";
     /**
      * 气泡消息文字颜色
      */
@@ -62,7 +62,7 @@ public class DragBubbleView extends View {
     /**
      * 气泡消息文字大小
      */
-    private float mTextSize;
+    private float mTextSize = 10;
     /**
      * 不动气泡的半径
      */

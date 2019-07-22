@@ -7,9 +7,18 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-    <com.zhutingyu.paint.canvas.path.BezierView
+    <!--<com.zhutingyu.paint.canvas.path.DragBubbleView-->
+            <!--app:bubble_color="@color/green"-->
+            <!--app:bubble_radius="10dp"-->
+            <!--app:bubble_text="2"-->
+            <!--app:bubble_textColor="@color/orange"-->
+            <!--app:bubble_textSize="8sp"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+           <!--/>-->
+
+    <com.zhutingyu.learn.painDemo.QqBubbleView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-           />
+            android:layout_height="match_parent"/>
 
 </LinearLayout>
