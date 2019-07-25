@@ -14,6 +14,9 @@ import android.view.animation.OvershootInterpolator
 import androidx.annotation.RequiresApi
 import com.zhutingyu.paint.R
 
+/**
+ * 仿qq消息气泡
+ */
 class QqBubbleView @JvmOverloads constructor(context: Context?, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
     View(context, attrs, defStyleAttr) {
 
