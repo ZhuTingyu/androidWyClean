@@ -54,7 +54,7 @@ public class View {
         return result;
     }
 
-    private boolean onTouchEvent(MotionEvent event) {
+    protected boolean onTouchEvent(MotionEvent event) {
         if (onClickListener != null) {
             onClickListener.onClick(this);
             return true;
