@@ -1,32 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-    <!--<com.zhutingyu.paint.canvas.path.DragBubbleView-->
-            <!--app:bubble_color="@color/green"-->
-            <!--app:bubble_radius="10dp"-->
-            <!--app:bubble_text="2"-->
-            <!--app:bubble_textColor="@color/orange"-->
-            <!--app:bubble_textSize="8sp"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-           <!--/>-->
+    <com.zhutingyu.paint.pingxinview.ParallaxContainer
+            android:id="@+id/parallax_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-<!--    <com.zhutingyu.learn.painDemo.SearchPathDemoView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"/>-->
+    </com.zhutingyu.paint.pingxinview.ParallaxContainer>
 
-    <Button
-            android:id="@+id/button"
-            android:text="动画"
-            android:onClick="scale"
-            android:layout_centerInParent="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
+    <ImageView
+            android:id="@+id/iv_man"
+            android:layout_width="67dp"
+            android:layout_height="202dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/intro_item_manrun_1" />
 </RelativeLayout>
