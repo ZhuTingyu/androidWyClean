@@ -2,12 +2,14 @@ package com.zhu.utils
 
 import android.app.Activity
 import android.content.Context
+import android.graphics.Color
+import android.os.Build.VERSION.SDK_INT
+import android.os.Build.VERSION_CODES.KITKAT
+import android.os.Build.VERSION_CODES.LOLLIPOP
 import android.util.Log
 import android.view.View
-import android.view.View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
 import android.view.Window
 import android.view.WindowManager
-import androidx.annotation.NonNull
 
 
 /**
@@ -136,7 +138,7 @@ import androidx.annotation.NonNull
     fun getStatusBarHeight(context: Context): Int {
         val resId = context.getResources().getIdentifier("status_bar_height", "dimen", "android")
         return if (resId > 0) {
-            context.getResources().getDimensionPixelSize(resId)
+            context.resources.getDimensionPixelSize(resId)
         } else 0
     }
     
@@ -171,12 +173,29 @@ import androidx.annotation.NonNull
      */
     fun setNavBarImmersive(activity: Activity) {
         //设置沉浸式
-        val decorView = activity.window.decorView
-        activity.window.clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
-        val uiOptions = (SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
-        decorView.systemUiVisibility = uiOptions
+        if (SDK_INT < KITKAT) {
+            return
+        }
+    
+        if (SDK_INT >= LOLLIPOP) {
+            val window = activity.window
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            //设置状态栏颜色透明
+            window.setStatusBarColor(Color.TRANSPARENT)
+        
+            var visibility = window.getDecorView().getSystemUiVisibility()
+            //布局内容全屏展示
+            visibility = visibility or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+            //隐藏虚拟导航栏
+            visibility = visibility or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+            //防止内容区域大小发生变化
+            visibility = visibility or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+    
+            window.decorView.systemUiVisibility = visibility
+        } else {
+            activity.window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+        }
     }
     
     fun setStatusBarVisibility(activity: Activity, isVisible: Boolean) {
