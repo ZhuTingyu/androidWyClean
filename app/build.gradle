@@ -40,4 +40,7 @@ dependencies {
 // (see https://github.com/ReactiveX/RxJava/releases for latest 2.x.x version)
     implementation 'io.reactivex.rxjava2:rxjava:2.1.16'
     implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation "androidx.coordinatorlayout:coordinatorlayout:1.1.0"
+    implementation 'com.google.android.material:material:1.1.0'
 }
