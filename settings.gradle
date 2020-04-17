@@ -1,1 +1,1 @@
-include ':app', ':paint', ':utils', ':imgloader'
+include ':app',':paint',':utils',':imgloader'
