@@ -1,5 +1,6 @@
 package com.zhutingyu.learn.uidemo.svg
 
+import android.R
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
@@ -7,6 +8,7 @@ import android.graphics.RectF
 import android.os.Handler
 import android.os.Looper
 import android.util.AttributeSet
+import android.view.MotionEvent
 import android.view.View
 import androidx.core.graphics.PathParser
 import org.w3c.dom.Element
@@ -25,7 +27,7 @@ class SvgMapView @JvmOverloads constructor(
     private val colorArray = intArrayOf(-0xdc6429, -0xcf561b, -0x7f340f, -0x1)
     private val itemList: MutableList<ProviceItem> = mutableListOf()
     private var paint: Paint = Paint()
-    private val select: ProviceItem? = null
+    private var select: ProviceItem? = null
     private var totalRect: RectF? = null
     private val scale = 1.0f
     private val loadThread = object : Thread() {
@@ -37,7 +39,6 @@ class SvgMapView @JvmOverloads constructor(
                 val doc = builder.parse(inputString)
                 val rootElements = doc.documentElement
                 val nodeList = rootElements.getElementsByTagName("path")
-                val list = arrayListOf<ProviceItem>()
                 var left = -1f
                 var right = -1f
                 var top = -1f
@@ -74,6 +75,26 @@ class SvgMapView @JvmOverloads constructor(
         loadThread.start()
     }
     
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+        handlerTouch(event?.x, event?.y)
+        return super.onTouchEvent(event)
+    }
+    
+    private fun handlerTouch(x: Float?, y: Float?) {
+        if (x != null && y != null) {
+            var selectItem: ProviceItem? = null
+            for (proviceItem in itemList) {
+                if (proviceItem.isTouch(x!!, y!!)) {
+                    selectItem = proviceItem
+                }
+            }
+            if (selectItem != null) {
+                select = selectItem
+                postInvalidate()
+            }
+        }
+    }
+    
     
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
@@ -84,7 +105,7 @@ class SvgMapView @JvmOverloads constructor(
                 if (proviceItem != select) {
                     proviceItem.drawItem(canvas, paint, false)
                 } else {
-                    select.drawItem(canvas, paint, true)
+                    select?.drawItem(canvas, paint, true)
                 }
             }
         }

@@ -1,10 +1,6 @@
 package com.zhutingyu.learn.uidemo.svg
 
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
-import android.graphics.Path
-
+import android.graphics.*
 
 
 /**
@@ -13,9 +9,10 @@ import android.graphics.Path
  * @description
  */
 class ProviceItem {
-    constructor(path: Path?){
+    constructor(path: Path?) {
         this.path = path
     }
+    
     var path: Path? = null
     
     /**
@@ -52,7 +49,20 @@ class ProviceItem {
             paint.setStrokeWidth(2f)
             canvas.drawPath(path, paint)
         }
-        
-        
+    }
+    
+    fun isTouch(x: Float, y: Float): Boolean {
+        var rectF = RectF()
+        path?.computeBounds(rectF, true)
+        var region = Region()
+        region.setPath(
+            path,
+            Region(
+                rectF.left.toInt(),
+                rectF.top.toInt(),
+                rectF.right.toInt(),
+                rectF.bottom.toInt()
+            ))
+       return region.contains(x.toInt(), y.toInt())
     }
 }
