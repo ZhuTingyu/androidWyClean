@@ -1,6 +1,6 @@
 package com.zhutingyu.paint.motionevent;
 
-public class MotionEvent{
+public class MyMotionEvent {
     public static final int ACTION_DOWN             = 0;
     public static final int ACTION_UP               = 1;
     public static final int ACTION_MOVE             = 2;
@@ -8,10 +8,10 @@ public class MotionEvent{
     private int actionMasked;
     private int x;
     private int y;
-    public MotionEvent() {
+    public MyMotionEvent() {
     }
 
-    public MotionEvent(int x, int y) {
+    public MyMotionEvent(int x, int y) {
         this.x = x;
         this.y = y;
     }

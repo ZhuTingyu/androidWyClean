@@ -10,36 +10,36 @@ import java.util.List;
  * @date: 2019-09-09
  * @description: View 的容器
  */
-public class ViewGroup extends View {
+public class MyViewGroup extends MyView {
 
-    private View[] mChrilds;
-    private List<View> mChildList = new ArrayList<>();
-    private View[] mChildren;
+    private MyView[] mChrilds;
+    private List<MyView> mChildList = new ArrayList<>();
+    private MyView[] mChildren;
     private TouchTarget mFirstTouchTarget;
 
-    public ViewGroup(int left, int top, int right, int bottom) {
+    public MyViewGroup(int left, int top, int right, int bottom) {
         super(left, top, right, bottom);
     }
 
-    public void addView(View view) {
+    public void addView(MyView view) {
         if (view == null) {
             return;
         }
         mChildList.add(view);
-        mChildren = (View[]) mChildList.toArray(new View[mChildList.size()]);
+        mChildren = (MyView[]) mChildList.toArray(new MyView[mChildList.size()]);
     }
 
     //接受分发的代码
-    public boolean dispatchTouchEvent(MotionEvent event) {
+    public boolean dispatchTouchEvent(MyMotionEvent event) {
         System.out.println(name + " dispatchTouchEvent ");
         boolean handled = false;
         boolean intercepted = onInterceptTouchEvent(event);
         int actionMasked = event.getActionMasked();
         TouchTarget newTouchTarget = null;
-        if (!intercepted && actionMasked != MotionEvent.ACTION_CANCEL) {
-            if (actionMasked == MotionEvent.ACTION_DOWN) {
+        if (!intercepted && actionMasked != MyMotionEvent.ACTION_CANCEL) {
+            if (actionMasked == MyMotionEvent.ACTION_DOWN) {
                 for (int i = mChildren.length - 1; i >= 0; i--) {
-                    View childe = mChildren[i];
+                    MyView childe = mChildren[i];
                     if (!childe.isContainer(event.getX(), event.getY())) {
                         continue;
                     }
@@ -58,11 +58,11 @@ public class ViewGroup extends View {
         return handled;
     }
 
-    public boolean onInterceptTouchEvent(MotionEvent ev) {
+    public boolean onInterceptTouchEvent(MyMotionEvent ev) {
         return false;
     }
 
-    private boolean dispatchTransformedTouchEvent(MotionEvent event, @Nullable View children) {
+    private boolean dispatchTransformedTouchEvent(MyMotionEvent event, @Nullable MyView children) {
         boolean handle = false;
         if (children != null) {
             handle = children.dispatchTouchEvent(event);
@@ -72,7 +72,7 @@ public class ViewGroup extends View {
         return handle;
     }
 
-    private TouchTarget addTouchTarget(View view) {
+    private TouchTarget addTouchTarget(MyView view) {
         final TouchTarget target = TouchTarget.obtain(view);
         target.next = mFirstTouchTarget;
         mFirstTouchTarget = target;
@@ -82,11 +82,11 @@ public class ViewGroup extends View {
     private static final class TouchTarget {
         private static TouchTarget sRecycleBin;
         private static final Object sRecycleLock = new Object();
-        public View child;//当前缓存的view
-        public TouchTarget next;
         private static int sRecycledCount;
+        public MyView child;//当前缓存的view
+        public TouchTarget next;
 
-        public static TouchTarget obtain(View child) {
+        public static TouchTarget obtain(MyView child) {
             TouchTarget target = null;
             synchronized (sRecycleLock) {
                 if (sRecycleBin == null) {
@@ -98,7 +98,7 @@ public class ViewGroup extends View {
                     target.next = null;
                 }
             }
-            target.child = null;
+            target.child = child;
             return target;
         }
 

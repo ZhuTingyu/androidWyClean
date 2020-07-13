@@ -1,7 +1,8 @@
-package com.zhutingyu.learn
+package com.zhutingyu.learn.demoactivity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.zhutingyu.learn.R
 
 
 class MainActivity : AppCompatActivity() {

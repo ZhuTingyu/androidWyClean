@@ -8,7 +8,7 @@ import com.zhutingyu.paint.motionevent.litener.OnTouchListener;
  * @date: 2019-09-09
  * @description: 手写控件View
  */
-public class View {
+public class MyView {
     private int left;
     private int top;
     private int right;
@@ -25,10 +25,10 @@ public class View {
         this.onClickListener = onClickListener;
     }
 
-    public View() {
+    public MyView() {
     }
 
-    public View(int left, int top, int right, int bottom) {
+    public MyView(int left, int top, int right, int bottom) {
         this.left = left;
         this.top = top;
         this.right = right;
@@ -40,7 +40,7 @@ public class View {
     }
 
     //接受分发的代码
-    public boolean dispatchTouchEvent(MotionEvent event) {
+    public boolean dispatchTouchEvent(MyMotionEvent event) {
         System.out.println(" view  dispatchTouchEvent ");
 //        消费
         boolean result = false;
@@ -54,7 +54,7 @@ public class View {
         return result;
     }
 
-    protected boolean onTouchEvent(MotionEvent event) {
+    protected boolean onTouchEvent(MyMotionEvent event) {
         if (onClickListener != null) {
             onClickListener.onClick(this);
             return true;

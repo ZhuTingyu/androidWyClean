@@ -1,9 +1,9 @@
 package com.zhutingyu.paint.motionevent.litener;
 
 
-import com.zhutingyu.paint.motionevent.MotionEvent;
-import com.zhutingyu.paint.motionevent.View;
+import com.zhutingyu.paint.motionevent.MyMotionEvent;
+import com.zhutingyu.paint.motionevent.MyView;
 
 public interface OnTouchListener {
-    boolean onTouch(View v, MotionEvent event);
+    boolean onTouch(MyView v, MyMotionEvent event);
 }
